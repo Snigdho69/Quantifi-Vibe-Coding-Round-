@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GitHub developer portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <form id="lookup">
+      <label for="user" class="sr">GitHub username</label>
+      <input id="user" autocomplete="off" placeholder="GitHub username" required>
+      <button type="submit">Load profile</button>
+      <button type="button" id="refresh" class="ghost">Refresh from GitHub</button>
+    </form>
+    <p id="status" role="status"></p>
+  </header>
+
+  <main id="app" hidden>
+    <section class="profile">
+      <img id="avatar" alt="" width="96" height="96">
+      <div class="who">
+        <h1 id="name"></h1>
+        <p id="bio" class="muted"></p>
+        <dl class="stats">
+          <div><dt>Followers</dt><dd id="followers"></dd></div>
+          <div><dt>Total stars</dt><dd id="stars"></dd></div>
+          <div><dt>Repositories</dt><dd id="repo-count"></dd></div>
+          <div><dt>Current streak</dt><dd id="cur-streak"></dd></div>
+          <div><dt>Longest streak</dt><dd id="long-streak"></dd></div>
+        </dl>
+      </div>
+      <div id="badge" class="badge" data-band="none">
+        <span id="badge-num">&ndash;</span>
+        <span class="badge-label">Tech stack match</span>
+      </div>
+    </section>
+
+    <div class="split">
+      <section>
+        <h2>Top languages</h2>
+        <div class="pie"><canvas id="pie" aria-label="Top languages pie chart" role="img"></canvas></div>
+      </section>
+      <section>
+        <h2>Vibe check</h2>
+        <form id="vibe-form">
+          <label for="jd">Paste a job description to see how your repositories match it</label>
+          <textarea id="jd" rows="7"></textarea>
+          <button type="submit">Check match</button>
+        </form>
+        <div id="vibe-result" aria-live="polite"></div>
+      </section>
+    </div>
+
+    <section>
+      <h2>Contributions</h2>
+      <p id="heat-note" class="muted"></p>
+      <div class="heat-scroll"><div id="heatmap" class="heatmap"></div></div>
+    </section>
+
+    <section>
+      <h2>Repositories</h2>
+      <div id="repos" class="repos"></div>
+    </section>
+  </main>
+</body>
+</html>
